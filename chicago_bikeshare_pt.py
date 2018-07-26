@@ -109,8 +109,14 @@ input("Aperte Enter para continuar...")
 # TAREFA 4
 # TODO: Conte cada gênero. Você não deveria usar uma função parTODO isso.
 
-male = column_to_list(data_list, 6).count("Male")
-female = column_to_list(data_list, 6).count("Female")
+male = 0
+female = 0
+
+for data in data_list:
+   if data[6] == "Male":
+        male += 1
+   elif data[6] == "Female":
+       female += 1
 
 
 # Verificando o resultado
@@ -177,7 +183,7 @@ def most_popular_gender(data_list):
     """
     male, female = count_gender(data_list)
     if male > female:
-        return "Male"
+        return "Male" # Favor corrigir o assert na linha 196/197 pois esta male
     return "Female"
 
 
@@ -210,7 +216,18 @@ print("\nTAREFA 7: Verifique o gráfico!")
 
 types_list = column_to_list(data_list, -3)
 types = ["Subscriber", "Customer"]
-quantity = [types_list.count("Subscriber"), types_list.count("Customer")]
+
+subscriber = 0
+
+customer = 0
+
+for type_user in types_list:
+   if type_user == "Subscriber":
+       subscriber += 1
+   elif type_user == "Customer":
+       customer += 1
+
+quantity = [subscriber,customer]
 y_pos = list(range(len(types)))
 plt.bar(y_pos, quantity)
 plt.ylabel('Quantidade')
