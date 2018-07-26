@@ -256,7 +256,6 @@ input("Aperte Enter para continuar...")
 # TODO: Ache a duração de viagem Mínima, Máxima, Média, e Mediana.
 # Você não deve usar funções prontas parTODO isso, como max() e min().
 
-
 def getMediasViagem(tempoViagens):
    """ 
       Função que retorna uma lista com os valores de minima, maxima
@@ -283,8 +282,26 @@ def getMediasViagem(tempoViagens):
        tempo = float(tempoViagem)
        if tempo < min_trip:
            min_trip = tempo
+   
+   lista_sorted = []
 
-   return [min_trip, max_trip, math.ceil(tempoTotal/count), (statistics.median(tempoViagensToIn))]
+   for tempo in tempoViagens:
+       lista_sorted.append(int(tempo))
+
+   lista_sorted = sorted(lista_sorted)
+
+   median = 0.
+
+   metade = len(lista_sorted) // 2
+
+   if not len(lista_sorted) % 2:
+       median = (int(lista_sorted[metade - 1]) + int(lista_sorted[metade])) / 2.0
+   else:
+       median = int(lista_sorted[metade])
+
+   print(median)
+
+   return [min_trip, max_trip, math.ceil(tempoTotal/count), math.ceil(median)]
 
 
 trip_duration_list = column_to_list(data_list, 2)
