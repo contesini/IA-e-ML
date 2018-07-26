@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# ignore chicago.csv
+chicago.csv
+
 # C extensions
 *.so
 
